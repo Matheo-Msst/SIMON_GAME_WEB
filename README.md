@@ -67,11 +67,11 @@ mosquitto -v
 
 ### Lancement du serveur Flask
 ```bash
-cd server ; python main.py
+python main.py
 ```
 > OU
 ```bash
-cd server ; python3 main.py
+python3 main.py
 ```
 
 L'application sera accessible sur `http://localhost:5000`
@@ -142,8 +142,8 @@ Jeu Simon                              scores.json + users.db
 
 ## 👥 Contributeurs
 
-- **YarkinOner**
-- **Mathéo**
+- **Yarkin Oner**
+- **Mathéo Maussant**
 
 ---
 
