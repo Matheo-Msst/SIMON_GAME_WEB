@@ -266,18 +266,15 @@
 <div class="dashboard-container">
     <div class="dashboard-header">
         <div class="welcome-section">
-            <h1>👋 Bienvenue, {{ session.get('username') }} !</h1>
+            <h1>👋 Bienvenue, {{ username }} !</h1>
             <p>Consultez vos performances et comparez-vous aux autres joueurs</p>
         </div>
     </div>
 
-
     <div class="scores-section">
         <div class="section-header">
             <h2>🏅 Tableau des scores</h2>
-            <button class="refresh-btn" onclick="location.reload()">
-                🔄 Actualiser
-            </button>
+            <button class="refresh-btn" onclick="location.reload()">🔄 Actualiser</button>
         </div>
 
         {% if scores %}
@@ -309,7 +306,7 @@
                         <td class="username-cell">{{ score.username }}</td>
                         <td><span class="score-value">{{ score.score }}</span></td>
                         <td><span class="device-badge">{{ score.ssid }}</span></td>
-                        <td>{{ score.date }}</td>
+                        <td>{{ score.date }}</td> <!-- affichage date -->
                     </tr>
                     {% endfor %}
                 </tbody>

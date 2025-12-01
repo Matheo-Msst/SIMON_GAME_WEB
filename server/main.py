@@ -8,7 +8,7 @@ APP_SECRET = 'change-me'
 MQTT_BROKER = '127.0.0.1'
 MQTT_PORT = 1883
 DB_FILE = 'users.db'
-SCORES_DIR = './json'
+SCORES_DIR = './server/json'
 SCORES_FILE = os.path.join(SCORES_DIR, 'scores.json')
 
 # --- Flask app ---
@@ -54,14 +54,19 @@ def on_message(client, userdata, msg):
                 scores = json.load(f)
         except FileNotFoundError:
             scores = []
+
+        timestamp = int(time.time())
         scores.append({
             "ssid": data.get("ssid"),
             "username": data.get("username"),
             "score": data.get("score"),
-            "ts": int(time.time())
+            "ts": timestamp,
+            "date": time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(timestamp))  # <-- date lisible
         })
+
         with open(SCORES_FILE, 'w') as f:
             json.dump(scores, f, indent=2)
+
     elif msg.topic == "simon/pair/ack":
         print(f"{data.get('ssid')} paired with {data.get('username')} - status: {data.get('status')}")
 
@@ -131,7 +136,8 @@ def dashboard():
             scores = json.load(f)
     except:
         scores = []
-    recent_scores = list(reversed(scores[-200:]))
+
+    recent_scores = list(reversed(scores[-200:]))  # plus récent en premier
     return render_template('dashboard.html', username=session['username'], scores=recent_scores)
 
 @app.route('/logout')
