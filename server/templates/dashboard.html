@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>📊 Tableau des scores</h1>
+<div class="nav">
+    <span>Bonjour <strong>{{ username }}</strong></span> | 
+    <a href="{{ url_for('pair') }}">🔗 Pairing ESP32</a> | 
+    <a href="{{ url_for('logout') }}">🚪 Déconnexion</a>
+</div>
+
+{% if scores %}
+<table>
+  <thead>
+    <tr><th>Utilisateur</th><th>Score</th><th>Date et heure</th></tr>
+  </thead>
+  <tbody>
+  {% for score in scores %}
+    <tr>
+      <td>{{ score['username'] }}</td>
+      <td>{{ score['score'] }}</td>
+      <td>{{ score['ts'] | timestamp_to_date }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<div class="info">Aucun score enregistré pour le moment.</div>
+{% endif %}
+{% endblock %}
