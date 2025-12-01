@@ -49,8 +49,11 @@ Le projet se compose de trois éléments principaux :
 # Python 3.7+
 # Mosquitto MQTT Broker
 # ESP32 avec MicroPython/Arduino
+# git
 ```
-
+```bash 
+git clone https://github.com/Matheo-Msst/IOT_SIMON_GAME.git 
+```
 ### Installation du serveur
 ```bash
 cd server
@@ -64,7 +67,7 @@ mosquitto -v
 
 ### Lancement du serveur Flask
 ```bash
-python main.py
+cd server ; python main.py
 ```
 
 L'application sera accessible sur `http://localhost:5000`
