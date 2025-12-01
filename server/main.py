@@ -8,7 +8,7 @@ APP_SECRET = 'change-me'
 MQTT_BROKER = '127.0.0.1'
 MQTT_PORT = 1883
 DB_FILE = 'users.db'
-SCORES_DIR = './server/json'
+SCORES_DIR = './json'
 SCORES_FILE = os.path.join(SCORES_DIR, 'scores.json')
 
 # --- Flask app ---
