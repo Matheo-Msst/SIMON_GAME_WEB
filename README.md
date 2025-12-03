@@ -67,7 +67,14 @@ mosquitto -v
 
 ### Lancement du serveur Flask
 ```bash
+<<<<<<< HEAD
 python main.py
+=======
+python3 -m venv venv ; source venv/bin/activate
+```
+```bash
+cd server ; python main.py
+>>>>>>> 03a0b72 (readme)
 ```
 > OU
 ```bash
